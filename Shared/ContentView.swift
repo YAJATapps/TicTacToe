@@ -9,8 +9,31 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        VStack(spacing: 20) {
+            
+            HStack {
+                Spacer()
+                
+                Button(action: {
+                    
+                }
+                ){
+                    Image("settings")
+                }
+            }
+            
+            Spacer()
+            
+            Button("One player") {
+                
+            }
+            
+            Button("Two player") {
+                
+            }
+            
+            Spacer()
+        }
     }
 }
 

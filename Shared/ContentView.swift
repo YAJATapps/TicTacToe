@@ -7,33 +7,36 @@
 
 import SwiftUI
 
+// View with the main content. Shown on start
 struct ContentView: View {
     var body: some View {
-        VStack(spacing: 20) {
-            
-            HStack {
+        NavigationView {
+            VStack(spacing: 20) {
+                
+                HStack {
+                    Spacer()
+                    
+                    Button(action: {
+                        
+                    }
+                    ){
+                        Image("settings")
+                    }
+                }
+                
                 Spacer()
                 
-                Button(action: {
-                    
+                NavigationLink(destination: GameView()) {
+                    Text("One player")
                 }
-                ){
-                    Image("settings")
+                
+                NavigationLink(destination: GameView()) {
+                    Text("Two player")
                 }
-            }
-            
-            Spacer()
-            
-            Button("One player") {
                 
+                Spacer()
             }
-            
-            Button("Two player") {
-                
-            }
-            
-            Spacer()
-        }
+        }.navigationViewStyle(StackNavigationViewStyle())
     }
 }
 

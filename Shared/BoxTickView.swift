@@ -15,21 +15,44 @@ struct BoxTickView: View {
         case cross
         case zero
     }
-
-    var boxState = BoxState.empty
     
+    @State var boxState = BoxState.empty
+    
+    
+    // The unique number to identify box in grid
+    var boxNumber : Int
+    
+    // If it is X turn
+    @Binding var turn : Bool
     
     var body: some View {
-        if (boxState == BoxState.cross) {
-            Image(systemName: "multiply")
-        } else if(boxState == BoxState.zero) {
-            Image(systemName: "circle")
+        Button(action: {
+            if (turn) {
+                boxState = BoxState.cross
+            }
+            else {
+                boxState = BoxState.zero
+            }
+            turn.toggle()
+        }) {
+            if (boxState == BoxState.cross) {
+                Image(systemName: "multiply")
+                    .font(.system(size: 60))
+            } else if(boxState == BoxState.zero) {
+                Image(systemName: "circle")
+                    .font(.system(size: 60))
+            } else {
+                Image(systemName: "square")
+                    .font(.system(size: 60))
+            }
         }
+        .buttonStyle(.plain)
     }
+    
 }
 
 struct BoxTickView_Previews: PreviewProvider {
     static var previews: some View {
-        BoxTickView()
+        BoxTickView(boxNumber: 1, turn: Binding.constant(true))
     }
 }

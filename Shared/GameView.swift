@@ -9,36 +9,40 @@ import SwiftUI
 
 // The view where the game is played. Contains the board which will accept 0,X
 struct GameView: View {
+    
+    // If it is the turn of X
+    @State var xTurn = true
+    
     var body: some View {
         VStack {
             Spacer()
             HStack {
                 Spacer()
-                BoxTickView(boxState: BoxTickView.BoxState.cross)
+                BoxTickView(boxNumber: 1, turn: $xTurn)
                 Spacer()
-                BoxTickView()
+                BoxTickView(boxNumber: 2, turn: $xTurn)
                 Spacer()
-                BoxTickView()
-                Spacer()
-            }
-            Spacer()
-            HStack {
-                Spacer()
-                BoxTickView()
-                Spacer()
-                BoxTickView()
-                Spacer()
-                BoxTickView()
+                BoxTickView(boxNumber: 3, turn: $xTurn)
                 Spacer()
             }
             Spacer()
             HStack {
                 Spacer()
-                BoxTickView()
+                BoxTickView(boxNumber: 4, turn: $xTurn)
                 Spacer()
-                BoxTickView()
+                BoxTickView(boxNumber: 5, turn: $xTurn)
                 Spacer()
-                BoxTickView()
+                BoxTickView(boxNumber: 6, turn: $xTurn)
+                Spacer()
+            }
+            Spacer()
+            HStack {
+                Spacer()
+                BoxTickView(boxNumber: 7, turn: $xTurn)
+                Spacer()
+                BoxTickView(boxNumber: 8, turn: $xTurn)
+                Spacer()
+                BoxTickView(boxNumber: 9, turn: $xTurn)
                 Spacer()
             }
             Spacer()

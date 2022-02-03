@@ -10,6 +10,16 @@ import SwiftUI
 // View with the main content. Shown on start
 struct ContentView: View {
     var body: some View {
+        #if os(iOS)
+            MainPageView().navigationViewStyle(StackNavigationViewStyle())
+        #elseif os(macOS)
+            MainPageView()
+        #endif
+    }
+}
+
+struct MainPageView: View {
+    var body: some View {
         NavigationView {
             VStack(spacing: 20) {
                 
@@ -36,7 +46,7 @@ struct ContentView: View {
                 
                 Spacer()
             }
-        }.navigationViewStyle(StackNavigationViewStyle())
+        }
     }
 }
 

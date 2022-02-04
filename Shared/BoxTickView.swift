@@ -25,15 +25,24 @@ struct BoxTickView: View {
     // If it is X turn
     @Binding var turn : Bool
     
+    // The action when button is clicked
+    var action: () -> Void
+    
     var body: some View {
         Button(action: {
-            if (turn) {
-                boxState = BoxState.cross
+
+            // Only check the box if its empty
+            if (boxState == BoxState.empty) {
+                self.action()
+                if (turn) {
+                    boxState = BoxState.cross
+                }
+                else {
+                    boxState = BoxState.zero
+                }
+                turn.toggle()
             }
-            else {
-                boxState = BoxState.zero
-            }
-            turn.toggle()
+            
         }) {
             if (boxState == BoxState.cross) {
                 Image(systemName: "multiply")
@@ -53,6 +62,6 @@ struct BoxTickView: View {
 
 struct BoxTickView_Previews: PreviewProvider {
     static var previews: some View {
-        BoxTickView(boxNumber: 1, turn: Binding.constant(true))
+        BoxTickView(boxNumber: 1, turn: Binding.constant(true), action: {})
     }
 }

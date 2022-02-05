@@ -23,7 +23,15 @@ struct GameView: View {
     @State private var showAlert = false
     
     // Presentation mode var to dismiss view
-    @Environment(\.presentationMode) var presentationMode
+    @Environment(\.presentationMode) private var presentationMode
+    
+    // Winning combinations
+    private let winningGrids = [[1,2,3], [4,5,6], [7,8,9], // Rows
+                                [1,4,7],[2,5,8],[3,6,9], // Columns
+                                [1,5,9],[3,5,7]] // Diagonals
+    
+    // Alert message on who won of if the match is draw
+    @State private var endMessage = "Match draw"
     
     var body: some View {
         VStack {
@@ -116,7 +124,7 @@ struct GameView: View {
             // Alert when all boxes are full
             Alert(
                 title: Text("Game over"),
-                message: Text("Cross won"),
+                message: Text(endMessage),
                 primaryButton: .default(
                     Text("Try Again"),
                     action: {
@@ -153,17 +161,53 @@ struct GameView: View {
         
         
         if unChecked {
-            if (xTurn) {
+            if xTurn {
                 xChecked.insert(element)
             } else {
                 zChecked.insert(element)
             }
         }
         
-        // Last box was checked
-        if (size == 8){
-            showAlert = true
+        // Can only win after having more than 4 boxes total checked.
+        // size var can be one less as it does not account for the box checked this time so check on every size above 3
+        if size > 3 {
+            for winGrid in winningGrids {
+                var xFull = true
+                var zFull = true
+                
+                for i in winGrid {
+                    if !xChecked.contains(i) {
+                        xFull = false
+                    }
+                    
+                    if !zChecked.contains(i) {
+                        zFull = false
+                    }
+                    
+                    if (!xFull && !zFull) {
+                        break
+                    }
+                }
+                
+                if xFull {
+                    endMessage = "Cross won"
+                    showAlert = true
+                }
+                
+                if zFull {
+                    endMessage = "Zero won"
+                    showAlert = true
+                }
+            }
+            
+            // Last box was checked
+            if size == 8 {
+                endMessage = "Match draw"
+                showAlert = true
+            }
         }
+        
+        
     }
     
 }

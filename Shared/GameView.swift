@@ -136,7 +136,7 @@ struct GameView: View {
                     }
                 ),
                 secondaryButton: .destructive(
-                    Text("Main menu"),
+                    closeButton,
                     action: {
                         presentationMode.wrappedValue.dismiss()
                     }
@@ -210,6 +210,14 @@ struct GameView: View {
         
     }
     
+}
+
+var closeButton: Text {
+#if os(iOS)
+    Text("Main menu")
+#elseif os(macOS)
+    Text("Close game")
+#endif
 }
 
 

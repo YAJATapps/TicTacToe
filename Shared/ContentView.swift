@@ -37,11 +37,7 @@ struct MainPageView: View {
                 Spacer()
                 
                 NavigationLink(destination: GameView()) {
-                    Text("One player")
-                }
-                
-                NavigationLink(destination: GameView()) {
-                    Text("Two player")
+                    Text("Two players")
                 }
                 
                 Spacer()

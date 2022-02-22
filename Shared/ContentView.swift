@@ -10,11 +10,11 @@ import SwiftUI
 // View with the main content. Shown on start
 struct ContentView: View {
     var body: some View {
-        #if os(iOS)
-            MainPageView().navigationViewStyle(StackNavigationViewStyle())
-        #elseif os(macOS)
-            MainPageView()
-        #endif
+#if os(iOS)
+        MainPageView().navigationViewStyle(StackNavigationViewStyle())
+#elseif os(macOS)
+        MainPageView()
+#endif
     }
 }
 
@@ -23,16 +23,13 @@ struct MainPageView: View {
         NavigationView {
             VStack(spacing: 20) {
                 
-                HStack {
-                    Spacer()
-                    
-                    Button(action: {
-                        
-                    }
-                    ){
-                        Image(systemName: "gear")
-                    }
-                }
+#if os(macOS)
+                Spacer()
+#endif
+                
+                Text("Tic \nTac \nToe")
+                    .font(.largeTitle)
+                    .bold()
                 
                 Spacer()
                 

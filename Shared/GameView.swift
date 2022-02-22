@@ -33,6 +33,9 @@ struct GameView: View {
     // Alert message on who won of if the match is draw
     @State private var endMessage = "Match draw"
     
+    // The variable used to reload view when user clicks try again
+    @State var updater: Bool = false
+    
     var body: some View {
         VStack {
             Spacer()
@@ -120,7 +123,9 @@ struct GameView: View {
                 Spacer()
             }
             Spacer()
-        }.alert(isPresented: $showAlert) {
+        }
+        .id(updater)
+        .alert(isPresented: $showAlert) {
             // Alert when all boxes are full
             Alert(
                 title: Text("Game over"),
@@ -131,6 +136,10 @@ struct GameView: View {
                         // New game
                         xChecked.removeAll()
                         zChecked.removeAll()
+                        
+                        // Reload the view
+                        updater.toggle()
+                        
                         xTurn = true
                         showAlert = false
                     }

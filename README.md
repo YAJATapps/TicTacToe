@@ -6,15 +6,15 @@ A basic two player tic tac toe game for macOS and iOS. Written with swift.
   
 
 
-![alt text](https://github.com/YAJATapps/TicTacToe/raw/main/screenshots/1.png)  
+![alt text](screenshots/1.png)  
 
-![alt text](https://github.com/YAJATapps/TicTacToe/raw/main/screenshots/2.png)  
+![alt text](screenshots/2.png)  
 
-![alt text](https://github.com/YAJATapps/TicTacToe/raw/main/screenshots/3.png)  
+![alt text](screenshots/3.png)  
 
-![alt text](https://github.com/YAJATapps/TicTacToe/raw/main/screenshots/4.png)  
+![alt text](screenshots/4.png)  
 
-![alt text](https://github.com/YAJATapps/TicTacToe/raw/main/screenshots/5.png)  
+![alt text](screenshots/5.png)  
 
-![alt text](https://github.com/YAJATapps/TicTacToe/raw/main/screenshots/6.png) 
+![alt text](screenshots/6.png) 
  
